@@ -20,7 +20,7 @@ import java.io.FileOutputStream;
 public class BookDetails extends AppCompatActivity {
 
     // creating variables for strings,text view, image views and button.
-    String title, subtitle, publisher, publishedDate, description, thumbnail, previewLink, infoLink, buyLink, authorsS;
+    String title, subtitle, publisher, publishedDate, description, thumbnail, previewLink, infoLink, buyLink, authorsS, isbn13;
     int pageCount;
 
     TextView titleTV, subtitleTV, publisherTV, descTV, pageTV, publishDateTV, authorTV;
@@ -57,9 +57,10 @@ public class BookDetails extends AppCompatActivity {
         infoLink = getIntent().getStringExtra("infoLink");
         buyLink = getIntent().getStringExtra("buyLink");
         authorsS = getIntent().getStringExtra("authors");
+        isbn13 = getIntent().getStringExtra("isbn13");
         // after getting the data we are setting
         // that data to our text views and image view.
-        titleTV.setText(title);
+        titleTV.setText(title +"["+isbn13+"]");//Todo check
         subtitleTV.setText(subtitle);
         publisherTV.setText(publisher);
         publishDateTV.setText("Published On : " + publishedDate);

@@ -56,6 +56,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
             public void onClick(View v) {
                 // inside on click listener method we are calling a new activity
                 // and passing all the data of that item in next intent.
+
                 Intent i = new Intent(mcontext, BookDetails.class);
                 i.putExtra("title", bookInfo.getTitle());
                 i.putExtra("subtitle", bookInfo.getSubtitle());
@@ -68,6 +69,17 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
                 i.putExtra("previewLink", bookInfo.getPreviewLink());
                 i.putExtra("infoLink", bookInfo.getInfoLink());
                 i.putExtra("buyLink", bookInfo.getBuyLink());
+                i.putExtra("isbn13", bookInfo.getIsbn13());
+                /*TODO switch from using Bookinfo object back to json
+                to send
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                intent.putExtra("json", jsonObject.toString());
+                startActivity(intent);
+                to get
+                if(getIntent().hasExtra("json")) {
+                   JsonObject mJsonObject = new JsonObject(getIntent().getStringExtra("json"));
+                }
+                */
 
                 // after passing that data we are
                 // starting our new intent.

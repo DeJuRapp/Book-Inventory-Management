@@ -6,17 +6,10 @@ public class BookInfo {
 
     // creating string, int and array list
     // variables for our book details
-    private String title;
-    private String subtitle;
+    private String title, subtitle, publisher, publishedDate, description, thumbnail, previewLink, infoLink, buyLink, isbn13 ;
     private ArrayList<String> authors;
-    private String publisher;
-    private String publishedDate;
-    private String description;
     private int pageCount;
-    private String thumbnail;
-    private String previewLink;
-    private String infoLink;
-    private String buyLink;
+
 
     // creating getter and setter methods
     public String getTitle() {
@@ -106,11 +99,13 @@ public class BookInfo {
     public void setBuyLink(String buyLink) {
         this.buyLink = buyLink;
     }
+    public void setIsbn13(String isbn13){this.isbn13 = isbn13;}
+    public String getIsbn13(){return isbn13;}
 
     // creating a constructor class for our BookInfo
     public BookInfo(String title, String subtitle, ArrayList<String> authors, String publisher,
                     String publishedDate, String description, int pageCount, String thumbnail,
-                    String previewLink, String infoLink, String buyLink) {
+                    String previewLink, String infoLink, String buyLink, String isbn13) {
         this.title = title;
         this.subtitle = subtitle;
         this.authors = authors;
@@ -122,5 +117,6 @@ public class BookInfo {
         this.previewLink = previewLink;
         this.infoLink = infoLink;
         this.buyLink = buyLink;
+        this.isbn13 = isbn13;
     }
 }

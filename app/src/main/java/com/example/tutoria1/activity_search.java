@@ -49,7 +49,7 @@ public class activity_search extends AppCompatActivity {
         //view.setBackgroundColor(Color.parseColor("#00ff00"));
         view.setBackgroundResource(R.drawable.pixil_frame_0_3_);
         tv1 = (TextView)findViewById(R.id.displaytext);
-        tv1.setText("9783957988935");//9783957988935
+        tv1.setText("9783423209939");//9783957988935
         //9783732014699
         //9783423209939
         configButton();
@@ -175,9 +175,21 @@ public class activity_search extends AppCompatActivity {
                                 authorsArrayList.add(authorsArray.optString(i));
                             }
                         }
+                        //TODO test
+                        String isbn13 = tv1.getText().toString() + "manual";//todo manual entfernen nach tests
+                        JSONArray identifyArray = itemsObj.getJSONObject("volumeInfo").getJSONArray("industryIdentifiers");
+                        for (int j = 0; j < identifyArray.length(); j++)
+                        {
+                            JSONObject itemsObj2 = identifyArray.getJSONObject(j);
+                            if(itemsObj2.optString("type").equals("ISBN_13"))
+                            {
+                                isbn13 = itemsObj2.optString("identifier");
+                            }
+                        }
+
                         // after extracting all the data we are
                         // saving this data in our modal class.
-                        BookInfo bookInfo = new BookInfo(title, subtitle, authorsArrayList, publisher, publishedDate, description, pageCount, thumbnail, previewLink, infoLink, buyLink);
+                        BookInfo bookInfo = new BookInfo(title, subtitle, authorsArrayList, publisher, publishedDate, description, pageCount, thumbnail, previewLink, infoLink, buyLink, isbn13);
 
                         // below line is use to pass our modal
                         // class in our array list.
