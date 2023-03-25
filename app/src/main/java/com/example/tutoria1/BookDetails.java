@@ -3,6 +3,7 @@ package com.example.tutoria1;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -13,6 +14,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.squareup.picasso.Picasso;
 
+import java.io.File;
+import java.io.FileOutputStream;
+
 public class BookDetails extends AppCompatActivity {
 
     // creating variables for strings,text view, image views and button.
@@ -20,7 +24,7 @@ public class BookDetails extends AppCompatActivity {
     int pageCount;
 
     TextView titleTV, subtitleTV, publisherTV, descTV, pageTV, publishDateTV, authorTV;
-    Button previewBtn, buyBtn;
+    Button previewBtn, buyBtn, addBtn;
     private ImageView bookIV;
 
     @Override
@@ -39,6 +43,7 @@ public class BookDetails extends AppCompatActivity {
         buyBtn = findViewById(R.id.idBtnBuy);
         bookIV = findViewById(R.id.idIVbook);
         authorTV = findViewById(R.id.idTVAuthors);
+        addBtn = findViewById(R.id.idBtnSaveInLib);
 
         // getting the data which we have passed from our adapter class.
         title = getIntent().getStringExtra("title");
@@ -96,5 +101,46 @@ public class BookDetails extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        addBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                writeFileExternalStorage();
+                //TODO save json
+            }
+        });
+
+    }
+
+    public void writeFileExternalStorage() {
+        //TODO check if file already exists
+        String filenameExternal = "Testfile";
+        //Text of the Document
+        String textToWrite = "bla bla bla";
+
+        //Checking the availability state of the External Storage.
+        String state = Environment.getExternalStorageState();
+        if (!Environment.MEDIA_MOUNTED.equals(state)) {
+            //If it isn't mounted - we can't write into it.
+            return;
+        }
+
+        //Create a new file that points to the root directory, with the given name:
+        File file = new File(getExternalFilesDir(null), filenameExternal);
+
+        //This point and below is responsible for the write operation
+        FileOutputStream outputStream = null;
+        try {
+            file.createNewFile();
+            //second argument of FileOutputStream constructor indicates whether
+            //to append or create new file if one exists
+            outputStream = new FileOutputStream(file, true);
+
+            outputStream.write(textToWrite.getBytes());
+            outputStream.flush();
+            outputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

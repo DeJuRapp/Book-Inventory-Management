@@ -162,7 +162,7 @@ public class activity_search extends AppCompatActivity {
                             thumbnail = imageLinks.optString("thumbnail");
                         }catch (Exception e)
                         {
-                            Log.println('a',"parser","fick mich");
+                            Log.println('a',"parser","no thumbnail");
                         }
                         //String thumbnail = imageLinks.optString("thumbnail");
                         String previewLink = volumeObj.optString("previewLink");

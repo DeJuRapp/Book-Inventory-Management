@@ -48,7 +48,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
         holder.authorTV.setText(bookInfo.getAuthors().toString());
 
         // below line is use to set image from URL in our image view.
-        Picasso.get().load(bookInfo.getThumbnail().replace("http://","https://")).into(holder.bookIV);
+        Picasso.get().load(bookInfo.getThumbnail().replace("http://","https://")).into(holder.bookIV); //apparently picasso cant resolve the http version so we use the https version
 
         // below line is use to add on click listener for our item of recycler view.
         holder.itemView.setOnClickListener(new View.OnClickListener() {
