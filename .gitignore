@@ -40,3 +40,4 @@ proguard/
 
 # Log Files
 *.log
+/.idea/vcs.xml
