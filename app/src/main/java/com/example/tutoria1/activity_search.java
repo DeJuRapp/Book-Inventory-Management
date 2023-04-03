@@ -152,21 +152,112 @@ public class activity_search extends AppCompatActivity {
                         String publisher = volumeObj.optString("publisher");
                         String publishedDate = volumeObj.optString("publishedDate");
                         String description = volumeObj.optString("description");
-                        String printType = volumeObj.optString("printType");
-                        String category = volumeObj.getJSONArray("authors").toString();
-                        JSONObject saleInfo = volumeObj.getJSONObject("saleInfo");
-                        String language = volumeObj.optString("language");
-                        String canonicVolumeLink = volumeObj.optString("canonicalVolumeLink");
-                        String saleability = saleInfo.optString("saleability");
-                        boolean isEbook  = saleInfo.optBoolean("isEbook");
-                        JSONObject accessInfo = volumeObj.getJSONObject("accessInfo");
-                        String webReaderLink = accessInfo.optString("webReaderLink");
-                        boolean pdf = accessInfo.getJSONObject("pdf").optBoolean("isAvailable");
-                        String country = accessInfo.optString("country");
-                        String viewability = accessInfo.optString("viewability");
-                        String textSnippet = volumeObj.getJSONObject("searchInfo").optString("textSnippet");
-                        String smallImageLink = volumeObj.getJSONObject("imageLinks").optString("smallThumbnail");
-                        boolean epub = accessInfo.getJSONObject("epub").optBoolean("isAvailable");
+
+                        String printType = "";
+                        try{
+                            printType = volumeObj.optString("printType");
+                        }catch (Exception e)
+                        {
+                            Log.println('a',"parser","no print type");
+                        }
+                        String category = "";
+                        try{
+                            category = volumeObj.getJSONArray("authors").toString();
+                        }catch (Exception e)
+                        {
+                            Log.println('a',"parser","no category");
+                        }
+                        JSONObject saleInfo = null;
+                        try{
+                            saleInfo = volumeObj.getJSONObject("saleInfo");
+                        }catch (Exception e)
+                        {
+                            Log.println('a',"parser","no saleInfo");
+                        }
+                        String language = "";
+                        try{
+                            language = volumeObj.optString("language");
+                        }catch (Exception e)
+                        {
+                            Log.println('a',"parser","no language");
+                        }
+                        String canonicVolumeLink = "";
+                        try{
+                            canonicVolumeLink = volumeObj.optString("canonicalVolumeLink");
+                        }catch (Exception e)
+                        {
+                            Log.println('a',"parser","no canonicVolumeLink");
+                        }
+                        String saleability = "";
+                        try{
+                            saleability = saleInfo.optString("saleability");
+                        }catch (Exception e)
+                        {
+                            Log.println('a',"parser","no saleability");
+                        }
+                        boolean isEbook = false;
+                        try{
+                            isEbook = saleInfo.optBoolean("isEbook");
+                        }catch (Exception e)
+                        {
+                            Log.println('a',"parser","no isEbook value");
+                        }
+                        JSONObject accessInfo = null;
+                        try{
+                            accessInfo = volumeObj.getJSONObject("accessInfo");
+                        }catch (Exception e)
+                        {
+                            Log.println('a',"parser","no accessInfo");
+                        }
+                        String webReaderLink = "";
+                        try{
+                            webReaderLink = accessInfo.optString("webReaderLink");
+                        }catch (Exception e)
+                        {
+                            Log.println('a',"parser","no webReaderLink");
+                        }
+                        boolean pdf = false;
+                        try {
+                            pdf = accessInfo.getJSONObject("pdf").optBoolean("isAvailable");
+                        }catch (Exception e)
+                        {
+                            Log.println('a',"parser","no pdf value");
+                        }
+                        String country = "";
+                        try{
+                            country = accessInfo.optString("country");
+                        }catch (Exception e)
+                        {
+                            Log.println('a',"parser","no country information");
+                        }
+                        String viewability = "";
+                        try{
+                            viewability = accessInfo.optString("viewability");
+                        }catch (Exception e)
+                        {
+                            Log.println('a',"parser","no viewability information");
+                        }
+                        String textSnippet = "";
+                        try{
+                            textSnippet = volumeObj.getJSONObject("searchInfo").optString("textSnippet");
+                        }catch (Exception e)
+                        {
+                            Log.println('a',"parser","no textSnippet");
+                        }
+                        String smallImageLink = "";
+                        try{
+                            smallImageLink = volumeObj.getJSONObject("imageLinks").optString("smallThumbnail");
+                        }catch (Exception e)
+                        {
+                            Log.println('a',"parser","no smallImageLink");
+                        }
+                        boolean epub = false;
+                        try {
+                            epub = accessInfo.getJSONObject("epub").optBoolean("isAvailable");
+                        }catch (Exception e)
+                        {
+                            Log.println('a',"parser","no epub value");
+                        }
                         int pageCount = volumeObj.optInt("pageCount");
                         JSONObject imageLinks = volumeObj.optJSONObject("imageLinks");
                         String thumbnail = "null";
