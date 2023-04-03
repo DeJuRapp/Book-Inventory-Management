@@ -1,22 +1,19 @@
 package com.example.tutoria1;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 public class BookInfo {
 
     // creating string, int and array list
     // variables for our book details
-    private String title;
-    private String subtitle;
+    private String title, subtitle, publisher, publishedDate, description, thumbnail, previewLink, infoLink, buyLink, isbn13,
+    printType, category, smallImageLink, language, canonicVolumeLink, country, webReaderLink, textSnippet, saleability, viewability;
+    private boolean isEbook, epub, pdf;
     private ArrayList<String> authors;
-    private String publisher;
-    private String publishedDate;
-    private String description;
     private int pageCount;
-    private String thumbnail;
-    private String previewLink;
-    private String infoLink;
-    private String buyLink;
+
 
     // creating getter and setter methods
     public String getTitle() {
@@ -106,21 +103,52 @@ public class BookInfo {
     public void setBuyLink(String buyLink) {
         this.buyLink = buyLink;
     }
+    public void setIsbn13(String isbn13){this.isbn13 = isbn13;}
+    public String getIsbn13(){return isbn13;}
+
+    public String JsonString()
+    {
+        return BookJson().toString();
+    }
+    public JSONObject BookJson()
+    {
+        return null;
+    }
 
     // creating a constructor class for our BookInfo
-    public BookInfo(String title, String subtitle, ArrayList<String> authors, String publisher,
-                    String publishedDate, String description, int pageCount, String thumbnail,
-                    String previewLink, String infoLink, String buyLink) {
+    public BookInfo(String title, String subtitle, String publisher, String publishedDate, String description, String thumbnail, String previewLink,
+                    String infoLink, String buyLink, String isbn13,
+                    String printType, String category, String smallImageLink, String language, String canonicVolumeLink,
+                    String country, String webReaderLink, String textSnippet,
+                    String saleability, boolean isEbook, String viewability, boolean epub,
+                    boolean pdf, ArrayList<String> authors, int pageCount) {
+
         this.title = title;
         this.subtitle = subtitle;
-        this.authors = authors;
+        this.publisher = publisher;
+        this.description = description;
         this.publisher = publisher;
         this.publishedDate = publishedDate;
         this.description = description;
-        this.pageCount = pageCount;
         this.thumbnail = thumbnail;
         this.previewLink = previewLink;
         this.infoLink = infoLink;
         this.buyLink = buyLink;
+        this.isbn13 = isbn13;
+        this.printType = printType;
+        this.category = category;
+        this.smallImageLink = smallImageLink;
+        this.language = language;
+        this.canonicVolumeLink = canonicVolumeLink;
+        this.country = country;
+        this.webReaderLink = webReaderLink;
+        this.textSnippet = textSnippet;
+        this.saleability = saleability;
+        this.isEbook = isEbook;
+        this.viewability = viewability;
+        this.epub = epub;
+        this.pdf = pdf;
+        this.authors = authors;
+        this.pageCount = pageCount;
     }
 }
