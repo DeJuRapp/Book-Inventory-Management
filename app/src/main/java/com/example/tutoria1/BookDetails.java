@@ -114,10 +114,10 @@ public class BookDetails extends AppCompatActivity {
     }
 
     public void writeFileExternalStorage() {
-        //TODO check if file already exists
+        //TODO check if entry already exists
         String filenameExternal = "Testfile";
         //Text of the Document
-        String textToWrite = "bla bla bla";
+        String textToWrite = "\"Titel:\" " + "\""+title+"\"" +"\n\"ISBN\": \"" + isbn13+"\"\n";
 
         //Checking the availability state of the External Storage.
         String state = Environment.getExternalStorageState();

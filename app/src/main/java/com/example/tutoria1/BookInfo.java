@@ -1,12 +1,16 @@
 package com.example.tutoria1;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 public class BookInfo {
 
     // creating string, int and array list
     // variables for our book details
-    private String title, subtitle, publisher, publishedDate, description, thumbnail, previewLink, infoLink, buyLink, isbn13 ;
+    private String title, subtitle, publisher, publishedDate, description, thumbnail, previewLink, infoLink, buyLink, isbn13, pagecount,
+    printType, category, smallImageLink, language, canonicVolumeLink, country, webReaderLink, textSnippet;
+    private boolean saleability, isEbook, viewability, epub, pdf;
     private ArrayList<String> authors;
     private int pageCount;
 
@@ -101,6 +105,15 @@ public class BookInfo {
     }
     public void setIsbn13(String isbn13){this.isbn13 = isbn13;}
     public String getIsbn13(){return isbn13;}
+
+    public String JsonString()
+    {
+        return BookJson().toString();
+    }
+    public JSONObject BookJson()
+    {
+        return null;
+    }
 
     // creating a constructor class for our BookInfo
     public BookInfo(String title, String subtitle, ArrayList<String> authors, String publisher,

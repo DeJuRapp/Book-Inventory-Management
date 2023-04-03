@@ -49,9 +49,10 @@ public class activity_search extends AppCompatActivity {
         //view.setBackgroundColor(Color.parseColor("#00ff00"));
         view.setBackgroundResource(R.drawable.pixil_frame_0_3_);
         tv1 = (TextView)findViewById(R.id.displaytext);
-        tv1.setText("9783423209939");//9783957988935
+        tv1.setText("9783957988935");//9783957988935
         //9783732014699
         //9783423209939
+        //9783551771575
         configButton();
         configScanButton();
         progressBar = findViewById(R.id.progressBar);
