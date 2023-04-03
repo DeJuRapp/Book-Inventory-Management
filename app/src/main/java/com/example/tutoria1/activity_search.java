@@ -152,6 +152,21 @@ public class activity_search extends AppCompatActivity {
                         String publisher = volumeObj.optString("publisher");
                         String publishedDate = volumeObj.optString("publishedDate");
                         String description = volumeObj.optString("description");
+                        String printType = volumeObj.optString("printType");
+                        String category = volumeObj.getJSONArray("authors").toString();
+                        JSONObject saleInfo = volumeObj.getJSONObject("saleInfo");
+                        String language = volumeObj.optString("language");
+                        String canonicVolumeLink = volumeObj.optString("canonicalVolumeLink");
+                        String saleability = saleInfo.optString("saleability");
+                        boolean isEbook  = saleInfo.optBoolean("isEbook");
+                        JSONObject accessInfo = volumeObj.getJSONObject("accessInfo");
+                        String webReaderLink = accessInfo.optString("webReaderLink");
+                        boolean pdf = accessInfo.getJSONObject("pdf").optBoolean("isAvailable");
+                        String country = accessInfo.optString("country");
+                        String viewability = accessInfo.optString("viewability");
+                        String textSnippet = volumeObj.getJSONObject("searchInfo").optString("textSnippet");
+                        String smallImageLink = volumeObj.getJSONObject("imageLinks").optString("smallThumbnail");
+                        boolean epub = accessInfo.getJSONObject("epub").optBoolean("isAvailable");
                         int pageCount = volumeObj.optInt("pageCount");
                         JSONObject imageLinks = volumeObj.optJSONObject("imageLinks");
                         String thumbnail = "null";
@@ -190,7 +205,10 @@ public class activity_search extends AppCompatActivity {
 
                         // after extracting all the data we are
                         // saving this data in our modal class.
-                        BookInfo bookInfo = new BookInfo(title, subtitle, authorsArrayList, publisher, publishedDate, description, pageCount, thumbnail, previewLink, infoLink, buyLink, isbn13);
+                        BookInfo bookInfo = new BookInfo(title, subtitle, publisher, publishedDate, description, thumbnail, previewLink,
+                                                        infoLink, buyLink, isbn13, printType, category, smallImageLink, language,
+                                                        canonicVolumeLink, country, webReaderLink, textSnippet, saleability,
+                                                        isEbook, viewability, pdf, epub, authorsArrayList, pageCount);
 
                         // below line is use to pass our modal
                         // class in our array list.
