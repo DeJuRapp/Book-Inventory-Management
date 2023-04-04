@@ -32,6 +32,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(myIntent);
             }
         });
+        Intent myIntent2 = new Intent(MainActivity.this, activity_library.class);
+        ImageButton button_test = (ImageButton) findViewById(R.id.imageButton3);
+        button_test.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(myIntent2);
+            }
+        });
 
     }
 }

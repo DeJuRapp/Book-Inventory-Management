@@ -17,53 +17,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
+        <!-- TODO remove comment
         <SearchView
             android:id="@+id/searchView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
         </SearchView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView"
+        -->
+        <ProgressBar
+            android:id="@+id/progressBar2"
+            style="?android:attr/progressBarStyle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:visibility="gone"/>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/idBookThumbnail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:srcCompat="@tools:sample/avatars" />
-
-                <TextView
-                    android:id="@+id/idTVBookTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_toEndOf="@id/idBookThumbnail"
-                    android:padding="3dp"
-                    android:text="Book Title"
-                    android:textColor="@color/black"
-                    android:textSize="11sp" />
-
-                <TextView
-                    android:id="@+id/idTVpublisher"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/idTVBookTitle"
-                    android:layout_marginTop="3dp"
-                    android:layout_toEndOf="@id/idBookThumbnail"
-                    android:padding="3dp"
-                    android:text="Publisher"
-                    android:textColor="@color/black"
-                    android:textSize="11sp" />
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/reclyer2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <LinearLayout
             android:layout_width="match_parent"
